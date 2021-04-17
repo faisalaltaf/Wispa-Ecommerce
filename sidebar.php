@@ -60,7 +60,7 @@
                 </a>
               </li>
       <li class="" style="list-style: none; ">
-                <a href="/forms/general.html" class="nav-link">
+                <a href="useradmin.php" class="nav-link">
                
                   <p>Show User and Admin</p>
                 </a>

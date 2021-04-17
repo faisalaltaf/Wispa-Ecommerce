@@ -1,13 +1,13 @@
 <?php 
     session_start();
 if($_SESSION["user_role"] == '0'){
+    header("Location: {$hostname}/admin/dashboard.php");
 
 }
-?>
+?>      
 
 
 
-<h2>faisal</h2>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,65 +30,83 @@ if($_SESSION["user_role"] == '0'){
           </div><!-- /.col -->
           
         </div><!-- /.row -->
-        <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">bs-stepper</h3>
+        <?php
+        if(isset($_POST['save'])){
+  include "config.php";
+
+  $fname =mysqli_real_escape_string($conn,$_POST['fname']);
+  $lname = mysqli_real_escape_string($conn,$_POST['lname']);
+  $user = mysqli_real_escape_string($conn,$_POST['user']);
+  $password = mysqli_real_escape_string($conn,md5($_POST['password']));
+  $role = mysqli_real_escape_string($conn,$_POST['role']);
+
+  // $sql = "SELECT username FROM user WHERE username = '{$user}'";
+$sql = "SELECT username FROM user WHERE username='{$user}'";
+  // $result = mysqli_query($conn, $sql) or die("Query Failed 1 change add-user.");
+
+  $result = mysqli_query($conn,$sql) or die("query failad 1 change add user");
+  // check the user already exit
+  if(mysqli_num_rows($result) > 0){
+    echo "<p style='color:red;text-align:center;margin: 10px 0;'>UserName already Exists.</p>";
+  }else{
+    // insert database 
+    $sql1 = "INSERT INTO user (first_name,last_name, username, password, role)   
+
+              VALUES ('{$fname}','{$lname}','{$user}','{$password}','{$role}')";
+    if(mysqli_query($conn,$sql1)){
+      // redirect user all show 
+      header("Location: {$hostname}/admin/add-user.php");
+    }else{
+      echo "<p style='color:red;text-align:center;margin: 10px 0;'>Can't Insert User.</p>";
+    }
+  }
+}
+?>
+  <div id="admin-content">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h1 class="admin-heading">Add User</h1>
+                  <button type="button" class="btn btn-success m-4"> <a href="useradmin.php" style="color: white;">Show Data</a></button>
               </div>
-              <div class="card-body p-0">
-                <div class="bs-stepper linear">
-                  <div class="bs-stepper-header" role="tablist">
-                    <!-- your steps here -->
-                    <div class="step active" data-target="#logins-part">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger" aria-selected="true">
-                        <span class="bs-stepper-circle">1</span>
-                        <span class="bs-stepper-label">Logins</span>
-                      </button>
-                    </div>
-                    <div class="line"></div>
-                    <div class="step" data-target="#information-part">
-                      <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger" aria-selected="false" disabled="disabled">
-                        <span class="bs-stepper-circle">2</span>
-                        <span class="bs-stepper-label">Various information</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="bs-stepper-content">
-                    <!-- your steps content here -->
-                    <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+              
+              <div class="col-md-offset-3 col-md-6">
+                  <!-- Form Start -->
+                  <form  action="<?php $_SERVER['PHP_SELF']; ?>" method ="POST" autocomplete="off">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                          <label>First Name</label>
+                          <input type="text" name="fname" class="form-control" placeholder="First Name" required>
+                      </div>
+                          <div class="form-group">
+                          <label>Last Name</label>
+                          <input type="text" name="lname" class="form-control" placeholder="Last Name" required>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <label>User Name</label>
+                          <input type="text" name="user" class="form-control" placeholder="Username" required>
                       </div>
-                      <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                    </div>
-                    <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+
                       <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                          </div>
-                          <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                          </div>
-                        </div>
+                          <label>Password</label>
+                          <input type="password" name="password" class="form-control" placeholder="Password" required>
                       </div>
-                      <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
-                Visit <a href="https://github.com/Johann-S/bs-stepper/#how-to-use-it">bs-stepper documentation</a> for more examples and information about the plugin.
-              </div>
-            </div>
+                      <div class="form-group">
+                          <label>User Role</label>
+                          <select class="form-control" name="role" >
+                              <option value="0">Normal User</option>
+                              <option value="1">Admin</option>
+                          </select>
+                      </div>
+                      <input type="submit"  name="save" class="btn btn-primary" value="Save" required />
+                  </form>
+                   <!-- Form End-->
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+       
       </div><!-- /.container-fluid -->
     </div>
 

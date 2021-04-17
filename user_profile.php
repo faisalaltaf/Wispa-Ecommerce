@@ -11,14 +11,19 @@ if(!isset($_SESSION["username"])){
 <?php include "sidebar.php" ?>
 <?php include "header.php" ?>
 
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
-    
     <div class="content-header">
       <div class="container-fluid">
-      <table class="table">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          
+        </div><!-- /.row -->
+       
+
+        <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
@@ -36,14 +41,9 @@ if(!isset($_SESSION["username"])){
       <td><?php echo $_SESSION['last_name'] ?></td>
       <td><?php echo $_SESSION['username']; ?></td>
       <td><?php
-                                  if($_SESSION['user_role'] == 1){
-                                    echo "Admin";
-                                  }else{
-                                    echo "User";
-                                  }
-                               ?></td>
+      if($_SESSION['user_role'] == 1){echo "Admin";
+        }else{echo "User"; }?></td>
     </tr>
- 
   </tbody>
 </table>
 
@@ -51,8 +51,13 @@ if(!isset($_SESSION["username"])){
  
 </table>
 
-      </div>
+      </div><!-- /.container-fluid -->
     </div>
+
+
+</div>
+      
+    
 </div>
 <?php include "footer.php" ?>
 
