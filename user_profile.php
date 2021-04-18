@@ -37,9 +37,9 @@ if(!isset($_SESSION["username"])){
     <tr>
 
       <th scope="row"><?php echo $_SESSION['user_id'];?></th>
-      <td><?php echo $_SESSION['first_name']; ?></td>
+      <td><?php echo  $_SESSION['first_name']?></td>
       <td><?php echo $_SESSION['last_name'] ?></td>
-      <td><?php echo $_SESSION['username']; ?></td>
+      <td><?php echo $_SESSION['username'] ?></td>
       <td><?php
       if($_SESSION['user_role'] == 1){echo "Admin";
         }else{echo "User"; }?></td>

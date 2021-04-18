@@ -62,7 +62,31 @@
       <li class="" style="list-style: none; ">
                 <a href="useradmin.php" class="nav-link">
                
-                  <p>Show User and Admin</p>
+                  <p>Show Data Admin & User</p>
+                </a>
+              </li>
+      <li class="" style="list-style: none; ">
+                <a href="product.php  " class="nav-link">
+               
+                  <p>Product Add</p>
+                </a>
+              </li>
+      <li class="" style="list-style: none; ">
+                <a href="" class="nav-link">
+               
+                  <p>Category Add</p>
+                </a>
+              </li>
+      <li class="" style="list-style: none; ">
+                <a href="" class="nav-link">
+               
+                  <p>Order Master</p>
+                </a>
+              </li>
+      <li class="" style="list-style: none; ">
+                <a href="" class="nav-link">
+               
+                  <p>Contact Us</p>
                 </a>
               </li>
     </div>
