@@ -8,41 +8,24 @@ if ($_SESSION['user_role'] == '0') {
 ?>
 
 <!-- active and deactive status query  -->
-<?php if (isset($_GET['type']) && $_GET['type'] != '') {
-  $type = mysqli_real_escape_string($conn, $_GET['type']);
-  if ($type == 'status') {
-    $operation = mysqli_real_escape_string($conn, $_GET['operation']);
-    $id = mysqli_real_escape_string($conn, $_GET['id']);
-    if ($operation == 'active') {
-      $status = '1';
-    } else {
-      $status = '0';
-    }
-    $update_status = "UPDATE categories set status='$status' where id='$id'";
-    mysqli_query($conn, $update_status);
-  }
-} ?>
 
 
-<?php $sql = "SELECT * FROM categories order by categories asc ";
+
+<?php $sql = "SELECT `id`, `email`, `company_name`, `mobile`, `address`, `Date and Time` FROM `contact_us` WHERE 1 ";
 $result =  mysqli_query($conn, $sql);
 ?>
 <?php include "header.php" ?>
 <?php include "sidebar.php" ?>
 
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
 <div id="admin-content">
   <div class="container">
     <div class="row">
       <div class="col-md-10">
-        <h1 class="admin-heading">All Categories</h1>
+        <h1 class="admin-heading">All Contact</h1>
       </div>
       <div class="col-md-2">
-        <a class="add-new" href="add-category.php">add category</a>
+        <a class="add-new" href="contact-us.php"> Add Contact</a>
       </div>
       <div class="col-md-12">
 
@@ -57,9 +40,11 @@ $result =  mysqli_query($conn, $sql);
                 <tr>
                   <th style="width: 10px">Serial No</th>
                   <th>ID</th>
-                  <th>Categories</th>
-                  <th style="width: 40px">Status</th>
-                  <th style="width: 40px">Edit</th>
+                  <th>Email</th>
+                  <th>Company Nama</th>
+                  <th>Mobile No</th>
+                  <th>Address</th>
+                  
                   <th style="width: 40px">Delete</th>
                 </tr>
               </thead>
@@ -71,17 +56,29 @@ $result =  mysqli_query($conn, $sql);
                   <tr>
                     <td><?php echo $i ?></td>
                     <td><?php echo $row['id']; ?></td>
-                    <td>  <?php echo $row['categories']; ?>
+                    <td>
 
-          </div>
+                      <?php echo $row['email']; ?>
+
           </td>
-          <td><?php if ($row['status'] == 1) {
-                    echo "<a href= '?type=status&operation=deactive&id=" . $row['id'] . "'>Active</a>";
-                  } else {
-                    echo "<a href='?type=status&operation=active&id=" . $row['id'] . "'>Deactive</a>";
-                  } ?></td>
-                  <td class='edit'><a href='update-category.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-edit'></i></a></td>
-          <td class='delete'><a href='category-delete.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-trash'></i></a></td>
+                    <td>
+
+                      <?php echo $row['company_name']; ?>
+
+          </td>
+                    <td>
+
+                      <?php echo $row['mobile']; ?>
+
+          </td>
+                    <td>
+
+                      <?php echo $row['address']; ?>
+
+          </td>
+          </div>
+        
+          <td class='delete'><a href='contact-delete.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-trash'></i></a></td>
 
           </tr>
 
@@ -101,5 +98,5 @@ $result =  mysqli_query($conn, $sql);
             <li class="page-item"><a class="page-link" href="#">»</a></li>
           </ul>
         </div>
-      </div> </div></div></div>
+      </div>
       <?php include "footer.php"; ?>

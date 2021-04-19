@@ -72,9 +72,9 @@
                 </a>
               </li>
       <li class="" style="list-style: none; ">
-                <a href="" class="nav-link">
+                <a href="category.php" class="nav-link">
                
-                  <p>Category Add</p>
+                  <p>Category </p>
                 </a>
               </li>
       <li class="" style="list-style: none; ">
@@ -84,7 +84,7 @@
                 </a>
               </li>
       <li class="" style="list-style: none; ">
-                <a href="" class="nav-link">
+                <a href="contact-us.php" class="nav-link">
                
                   <p>Contact Us</p>
                 </a>

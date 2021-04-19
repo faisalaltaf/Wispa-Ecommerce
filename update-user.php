@@ -13,12 +13,21 @@ if(isset($_POST['submit'])){
     $lname = mysqli_real_escape_string($conn,$_POST['l_name']);
     $user = mysqli_real_escape_string($conn,$_POST['username']);
     $role = mysqli_real_escape_string($conn,$_POST['role']);
+
+    $sql = "SELECT username FROM user WHERE username= '{$user}'";
+    $result =mysqli_query($conn,$sql) or die("failed query");
   
-    $sql = "UPDATE user SET first_name = '{$fname}', last_name = '{$lname}', username = '{$user}', role = '{$role}' WHERE user_id = {$userid}";
+    if(mysqli_num_rows($result) > 0){
+      echo "<p style='color:red;text-align:center;margin: 10px 0;'>category already Exists.</p>";
+    }else{
+      $sql = "UPDATE user SET first_name = '{$fname}', last_name = '{$lname}', username = '{$user}', role = '{$role}' WHERE user_id = {$userid}";
     
-	if(mysqli_query($conn,$sql)){
-        header("Location: {$hostname}/admin/useradmin.php");
-      }
+      if(mysqli_query($conn,$sql)){
+            header("Location: {$hostname}/admin/useradmin.php");
+          }
+    }
+
+
   }
 
 ?>
@@ -38,7 +47,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="col-md-offset-4 col-md-4">
                 <?php
-                include "config.php";
+            
                 $user_id = $_GET['id'];
                 $sql = "SELECT * FROM user WHERE user_id = {$user_id}";
                 $result = mysqli_query($conn, $sql) or die("Query Failed.");
