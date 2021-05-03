@@ -4,24 +4,24 @@ session_start();
 if ($_SESSION['user_role'] == '0') {
     header("Location: {$hostname}/admin/dashboard.php");
 }
-if (isset($_POST['submit'])) {
+if(isset($_POST['submit'])) {
 
-    $category = mysqli_real_escape_string($conn, $_POST['category']);
     $id = mysqli_real_escape_string($conn, $_POST['id']);
+    $categories = mysqli_real_escape_string($conn, $_POST['categories']);
 
-    $sql = "SELECT categories FROM categories WHERE categories='{$category}'";
+    $sql = "SELECT categories FROM categories WHERE categories='{$categories}'";
     $result = mysqli_query($conn, $sql) or die("query failad ");
+
     if(mysqli_num_rows($result) > 0){
         echo "<p style='color:red;text-align:center;margin: 10px 0;'>category already Exists.</p>";
     }else{
-        $sql = "UPDATE categories SET categories = '{$category}' WHERE id = {$id}";
+        $sql = "UPDATE categories SET categories = '{$categories}' WHERE id=$id}";
 
         if (mysqli_query($conn, $sql)) {
             header("Location: {$hostname}/admin/category.php");
+
         }
     }
-
-   
 }
 ?>
 <?php include "header.php" ?>
@@ -38,13 +38,12 @@ if (isset($_POST['submit'])) {
 
             </div><!-- /.row -->
             <?php
-
+            
             $id = $_GET['id'];
-            $sql = "SELECT * FROM categories WHERE id = {$id}";
+            $sql = "SELECT * FROM categories WHERE   id= {$id}";
             $result = mysqli_query($conn, $sql) or die("Query Failed.");
-            if (mysqli_num_rows($result) > 0) {
-
-                while ($row = mysqli_fetch_assoc($result)) {
+            if(mysqli_num_rows($result) > 0){
+              while($row = mysqli_fetch_assoc($result)){
             ?>
 
 
@@ -56,17 +55,16 @@ if (isset($_POST['submit'])) {
                         <div class="form-group">
 
                             <label>Category Name </label>
-                            <input type="category" name="category" class="form-control" value="<?php $row['categories'] ?>" placeholder="" required>
+                            <input type="text" name="categories" class="form-control" value="<?php echo $row['categories'];?>" required>
                         </div>
 
-                        <input type="submit" name="submit" class="btn btn-primary" value="Save" required />
+                        <input type="submit" name="submit" class="btn btn-primary" value="submit" required />
                     </form>
         </div>
     </div><!-- /.container-fluid -->
 </div>
 
-<?php }
-            } ?>
+<?php }  }?>
 </div>
 
 <?php include "footer.php" ?>

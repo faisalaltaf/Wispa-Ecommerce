@@ -2,7 +2,7 @@
 include "config.php";
 session_start();
 if ($_SESSION['user_role'] == '0') {
-    header("Location: {$hostname}/admin/dashboard.php");
+    header("Location: {$hostname}/user/dashboard.php");
 }
 
 ?>

@@ -2,7 +2,7 @@
 include "config.php";
 session_start();
 if ($_SESSION['user_role'] == '0') {
-  header("Location: {$hostname}/admin/dashboard.php");
+  header("Location: {$hostname}/user/dashboard.php");
 }
 
 ?>
@@ -43,7 +43,7 @@ $result =  mysqli_query($conn, $sql);
         <h1 class="admin-heading">All Categories</h1>
       </div>
       <div class="col-md-2">
-        <a class="add-new" href="add-category.php">add category</a>
+        <a class="add-new" href="add-product.php">Add Product</a>
       </div>
       <div class="col-md-12">
 
@@ -62,6 +62,8 @@ $result =  mysqli_query($conn, $sql);
                   <th>Product Name</th>
                   <th>RMP</th>
                   <th>Price</th>
+                  <th>qty</th>
+                  <th>image</th>
                   <th>Short Description</th>
                   <th style="width: 40px">Status</th>
                   <th style="width: 40px">Edit</th>
@@ -74,12 +76,14 @@ $result =  mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
                 ?>
                   <tr>
-                    <td><?php echo $i ?></td>
+                    <td><?php echo $i++ ?></td>
                     <td><?php echo $row['id']; ?></td>
-                    <td>  <?php echo $row['categories']; ?>
-                    <td>  <?php echo $row['product_name']; ?>
-                    <td>  <?php echo $row['rmp']; ?>
-                    <td>  <?php echo $row['price']; ?>
+                    <td>  <?php echo $row['categories']; ?></td>
+                    <td>  <?php echo $row['product_name']; ?></td>
+                    <td>  <?php echo $row['rmp']; ?>  </td>
+                    <td>  <?php echo $row['price']; ?></td>
+                    <td>  <?php echo $row['qty']; ?></td>
+                    <td > <img style="width: 4.1rem; height:auto;" class="img-circle elevation-2" src="../media/product/<?php echo $row['image']; ?> "/></td>
                     <td>  <?php echo $row['short_description']; ?>
 
           </div>
@@ -89,8 +93,8 @@ $result =  mysqli_query($conn, $sql);
                   } else {
                     echo "<a href='?type=status&operation=active&id=" . $row['id'] . "'>Deactive</a>";
                   } ?></td>
-                  <td class='edit'><a href='update-category.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-edit'></i></a></td>
-          <td class='delete'><a href='category-delete.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-trash'></i></a></td>
+                  <td class='edit'><a href='update-product.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-edit'></i></a></td>
+          <td class='delete'><a href='delete-product.php?id=<?php echo $row["id"]; ?>'><i class='fa fa-trash'></i></a></td>
 
           </tr>
 

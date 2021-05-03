@@ -78,7 +78,7 @@
                 </a>
               </li>
       <li class="" style="list-style: none; ">
-                <a href="" class="nav-link">
+                <a href="order_master.php" class="nav-link">
                
                   <p>Order Master</p>
                 </a>

@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 if($_SESSION["user_role"] == '0'){
-  header("Location: {$hostname}/admin/post.php");
+  header("Location: {$hostname}/user/dashboard.php");
 }
 $userid = $_GET['id'];
 

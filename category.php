@@ -2,7 +2,7 @@
 include "config.php";
 session_start();
 if ($_SESSION['user_role'] == '0') {
-  header("Location: {$hostname}/admin/dashboard.php");
+  header("Location: {$hostname}/user/dashboard.php");
 }
 
 ?>
@@ -69,7 +69,7 @@ $result =  mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                   <tr>
-                    <td><?php echo $i ?></td>
+                    <td><?php echo $i++ ?></td>
                     <td><?php echo $row['id']; ?></td>
                     <td>  <?php echo $row['categories']; ?>
 

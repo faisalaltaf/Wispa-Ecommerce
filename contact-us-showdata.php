@@ -1,8 +1,8 @@
 <?php
 include "config.php";
 session_start();
-if ($_SESSION['user_role'] == '0') {
-  header("Location: {$hostname}/admin/dashboard.php");
+if($_SESSION['user_role'] == '0') {
+  header("Location: {$hostname}/user/dashboard.php");
 }
 
 ?>

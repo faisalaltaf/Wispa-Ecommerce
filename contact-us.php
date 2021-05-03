@@ -2,7 +2,7 @@
 include "config.php";
 session_start();
 if($_SESSION['user_role'] == '0'){
-    header("Location: {$hostname}/admin/dashboard.php");
+    header("Location: {$hostname}/user/dashboard.php");
 }
   
 ?>
@@ -26,7 +26,7 @@ $sql = "SELECT email FROM contact_us WHERE email='{$email}'";
     echo "<p style='color:red;text-align:center;margin: 10px 0;'>UserName already Exists.</p>";
   }else{
     // insert database 
-   echo  $sql1 = "INSERT INTO contact_us (email,company_name, mobile, address)   
+     $sql1 = "INSERT INTO contact_us (email,company_name, mobile, address)   
 
               VALUES ('{$email}','{$company}','{$mobile}','{$address}')";
     if(mysqli_query($conn,$sql1)){

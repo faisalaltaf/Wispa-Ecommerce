@@ -8,6 +8,7 @@ if ($_SESSION["user_role"] == 0) {
 
 
 if(isset($_POST['submit'])){
+
     $userid =mysqli_real_escape_string($conn,$_POST['user_id']);
     $fname =mysqli_real_escape_string($conn,$_POST['f_name']);
     $lname = mysqli_real_escape_string($conn,$_POST['l_name']);
@@ -18,7 +19,7 @@ if(isset($_POST['submit'])){
     $result =mysqli_query($conn,$sql) or die("failed query");
   
     if(mysqli_num_rows($result) > 0){
-      echo "<p style='color:red;text-align:center;margin: 10px 0;'>category already Exists.</p>";
+      echo "<p style='color:red;text-align:center;margin: 10px 0;'>user already Exists.</p>";
     }else{
       $sql = "UPDATE user SET first_name = '{$fname}', last_name = '{$lname}', username = '{$user}', role = '{$role}' WHERE user_id = {$userid}";
     
