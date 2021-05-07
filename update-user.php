@@ -40,6 +40,13 @@ if(isset($_POST['submit'])){
 <?php include "sidebar.php";
 
 ?>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
 <div id="admin-content">
       <div class="container">
           <div class="row">
@@ -97,6 +104,7 @@ if(isset($_POST['submit'])){
           </div>
       </div>
   </div>
-
+                </div>
+            </div></div></div></div>
 
 <?php include "footer.php" ?>   

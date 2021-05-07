@@ -101,20 +101,20 @@ require "sidebar.php";
                
                 <!-- /.card-body -->
 				<div id="address_details">
-							<strong>Address</strong>
-							<?php echo $address?>, <?php echo $city?>, <?php echo $pincode?><br/><br/>
-							<strong>Order Status</strong>
+							<strong class="badge badge-pill badge-info px-2">Address:</strong>
+							<span class="badge badge-light">	<?php echo $address?>, <?php echo $city?>, <?php echo $pincode?></span>
+							<br><br><strong class="badge badge-secondary ">Order Status</strong>
 							<?php 
 							$order_status_arr=mysqli_fetch_assoc(mysqli_query($conn,"SELECT order_status.name from order_status,`order` where `order`.id='$order_id' and `order`.order_status=order_status.id"));
-							echo $order_status_arr['name'];
-							?>	
+						    ?> <small class="badge badge-success">   <?php echo $order_status_arr['name']; ?>  </small>
+								
 							
 						
 
-								<div class="form-group">
+								<div class="form-group py-2">
                 
 								<form method="post">
-									<select id="inputStatus" class="form-control custom-select" name="update_order_status" required>
+									<select id="inputStatus" class="form-control custom-select " name="update_order_status" required>
 										<option value="">Select Status</option>
 										<?php
 										$result=mysqli_query($conn,"select * from order_status");
@@ -126,8 +126,10 @@ require "sidebar.php";
 											}
 										}
 										?>
-									</select>
-									<input type="submit" class="form-control"/>
+									</select> <div class="container py-2">
+									
+									<button type="submit" class="btn btn-warning btn-lg btn-block">Order Status Change</button>
+									</div>
 								</form>
               </div>
 			  <div class="row">

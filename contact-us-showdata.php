@@ -16,7 +16,11 @@ $result =  mysqli_query($conn, $sql);
 ?>
 <?php include "header.php" ?>
 <?php include "sidebar.php" ?>
-
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <div class="content-header">
+	 <div class="container-fluid">
+<div class="content pb-0">
 
 <div id="admin-content">
   <div class="container">
@@ -25,7 +29,9 @@ $result =  mysqli_query($conn, $sql);
         <h1 class="admin-heading">All Contact</h1>
       </div>
       <div class="col-md-2">
-        <a class="add-new" href="contact-us.php"> Add Contact</a>
+      <button type="button" class="btn btn-danger container">      <a style="color:white;" class="add-new" href="contact-us.php"> Add Contact</a></button>
+
+
       </div>
       <div class="col-md-12">
 
@@ -99,4 +105,5 @@ $result =  mysqli_query($conn, $sql);
           </ul>
         </div>
       </div>
+    </div></div></div></div></div></div></div>  
       <?php include "footer.php"; ?>

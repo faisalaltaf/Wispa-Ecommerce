@@ -40,10 +40,14 @@
           <b class="text-light"></b>N<b class="text-light"></b>o<b class="text-light"></b> <b class="text-light"></b>e<b class="text-light"></b>l<b class="text-light"></b>e<b class="text-light"></b>m<b class="text-light"></b>e<b class="text-light"></b>n<b class="text-light"></b>t<b class="text-light"></b> <b class="text-light"></b>f<b class="text-light"></b>o<b class="text-light"></b>u<b class="text-light"></b>n<b class="text-light"></b>d<b class="text-light"></b>!<b class="text-light"></b>
         </div>
         
-      </a></div></div>
+      </a></div>
+      
       </div>
-      <li class="py-2" style="list-style: none; ">
-                <a href="user_profile.php" class="nav-link">
+      </div>
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <li class="nav-item py-2" style="list-style: none; ">
+                <a class="nav-link" href="user_profile.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
                   
                   <p>Profile Login User</p>
                 </a>
@@ -53,43 +57,60 @@
                 
 ?>
               </li>
-      <li class="" style="list-style: none; ">
-                <a href="user_add.php" class="nav-link">
+      <li class="nav-item" style="list-style: none; ">
+                <a class="nav-link" href="user_add.php" class="nav-link">
+                 <i class="nav-icon fas fa-th"></i>
                 
                   <p>Admin and User Add</p>
                 </a>
               </li>
-      <li class="" style="list-style: none; ">
-                <a href="useradmin.php" class="nav-link">
-               
-                  <p>Show Data Admin & User</p>
-                </a>
-              </li>
-      <li class="" style="list-style: none; ">
-                <a href="product.php  " class="nav-link">
+      
+      <li class="nav-item" style="list-style: none; ">
+                <a class="nav-link" href="product.php  " class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
                
                   <p>Product Add</p>
                 </a>
               </li>
-      <li class="" style="list-style: none; ">
-                <a href="category.php" class="nav-link">
+      <li class="nav-item" style="list-style: none; ">
+                <a class="nav-link" href="category.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
                
                   <p>Category </p>
                 </a>
               </li>
-      <li class="" style="list-style: none; ">
-                <a href="order_master.php" class="nav-link">
+      <li class="nav-item" style="list-style: none; ">
+                <a class="nav-link" href="order_master.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
                
                   <p>Order Master</p>
+                <span class="right badge badge-danger">New</span>
+
                 </a>
               </li>
-      <li class="" style="list-style: none; ">
-                <a href="contact-us.php" class="nav-link">
+      <li class="nav-item" style="list-style: none; ">
+      
+                <a class="nav-link" href="contact-us.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
                
                   <p>Contact Us</p>
                 </a>
               </li>
+              <li class="nav-item">
+            <a href="../widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Widgets
+              </p>
+            </a>
+          </li>
+              </ul>
     </div>
+</aside>
+</div>
+    </aside>
     <?php }?>
-    <!-- /.sidebar -->
-  </aside>
+
+
+
+

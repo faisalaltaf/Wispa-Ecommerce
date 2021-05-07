@@ -12,10 +12,11 @@ if ($_SESSION["user_role"] == 0) {
 <?php include "sidebar.php" ?>
 
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="card">
+   <!-- Content Header (Page header) -->
+   <div class="content-header">
+	 <div class="container-fluid">
+<div class="content pb-0">
+
                 <div class="card-header">
                 <button type="button" class="btn btn-success mx-4"> <a href="user_add.php" style="color: white;"> Add Data</a></button>
                     <h3 class="card-title">User and Admin data</h3>

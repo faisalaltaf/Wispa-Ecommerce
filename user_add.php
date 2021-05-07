@@ -1,39 +1,26 @@
 <?php 
-    session_start();
+  session_start();
 if($_SESSION["user_role"] == '0'){
-    header("Location: {$hostname}/admin/dashboard.php");
-
+  header("Location: {$hostname}/admin/dashboard.php");
+  
 }
 ?>      
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-</head>
-<body>
-    <?php include "header.php" ?> 
- <?php include "sidebar.php" ?> 
 
- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          
-        </div><!-- /.row -->
+
+       
         <?php
         if(isset($_POST['save'])){
   include "config.php";
 
+	$categories_id=mysqli_real_escape_string($conn,$_POST['categories_id']);
+	if (empty($_POST["categories_id"])) {
+		$categories_id = "Name is required";
+	  } else {
+		$categories_id = mysqli_real_escape_string($conn,$_POST['categories_id']);
+	  }
   $fname =mysqli_real_escape_string($conn,$_POST['fname']);
   $lname = mysqli_real_escape_string($conn,$_POST['lname']);
   $user = mysqli_real_escape_string($conn,$_POST['user']);
@@ -55,15 +42,28 @@ $sql = "SELECT username FROM user WHERE username='{$user}'";
               VALUES ('{$fname}','{$lname}','{$user}','{$password}','{$role}')";
     if(mysqli_query($conn,$sql1)){
       // redirect user all show 
-      header("Location: {$hostname}/admin/add-user.php");
+      
     }else{
-      echo "<p style='color:red;text-align:center;margin: 10px 0;'>Can't Insert User.</p>";
-    }
+    echo  "<p style='color:red;text-align:center;margin: 10px 0;'>Can't Insert User.</p>";
+     }
   }
 }
 ?>
+
+
+<?php include "header.php" ?> 
+ <?php include "sidebar.php" ?> 
+ 
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <div class="content-header">
+	 <div class="container-fluid">
+<div class="content pb-0">
+
   <div id="admin-content">
+
       <div class="container">
+    
           <div class="row">
               <div class="col-md-12">
                   <h1 class="admin-heading">Add User</h1>
@@ -112,7 +112,5 @@ $sql = "SELECT username FROM user WHERE username='{$user}'";
 
 
 </div>
-
+</div>
  <?php include "footer.php" ?> 
-</body>
-</html>

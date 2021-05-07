@@ -50,8 +50,8 @@ $sql = "SELECT email FROM contact_us WHERE email='{$email}'";
             <h1 class="m-0">Contact Us</h1>
 
           </div><!-- /.col -->
-          <button> <a href="contact-us-showdata.php">button</a></button>
          
+          <button type="button" class="btn btn-success"><a style="color: white;" href="contact-us-showdata.php">Show Contact</a></button>
         </div><!-- /.row -->
         <form  action="<?php $_SERVER['PHP_SELF']; ?>" method ="POST" autocomplete="off">
                       <div class="form-group">
